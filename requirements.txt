@@ -1,0 +1,2 @@
+setuptools==33.1.0
+devpi-client
