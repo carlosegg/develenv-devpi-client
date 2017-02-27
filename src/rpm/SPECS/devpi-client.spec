@@ -38,13 +38,18 @@ mkdir -p $RPM_BUILD_ROOT/%{devpi_repository}
 
 cd %{_srcrpmdir}/..
 make devclean
-make install HOME_DIR=$RPM_BUILD_ROOT/%{installdir}  RPM_BUILD_ROOT=$RPM_BUILD_ROOT LIB_DIR=%{libdir} SITEPACKAGES_PATH=%{sitepackages_path}
+make install HOME_DIR=$RPM_BUILD_ROOT/%{installdir} RPM_BUILD_ROOT=$RPM_BUILD_ROOT LIB_DIR=%{libdir} SITEPACKAGES_PATH=%{sitepackages_path}
+cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/
+mkdir -p $RPM_BUILD_ROOT/usr/bin
+ln -sf %{bindir}/devpi-upload.sh $RPM_BUILD_ROOT/usr/bin/devpi-upload.sh
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
+/usr/bin/*
 %{installdir}
 %{libdir}
 %{bindir}
