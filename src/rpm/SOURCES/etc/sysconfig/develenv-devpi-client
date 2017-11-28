@@ -1,0 +1,2 @@
+DEVPI_HOSTNAME=localhost
+DEVPI_CLIENT_HOME=/opt/ss/develenv/platform/devpi-client
