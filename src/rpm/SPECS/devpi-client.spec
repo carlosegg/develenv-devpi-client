@@ -35,7 +35,6 @@ mkdir -p $RPM_BUILD_ROOT/%{bindir}
 mkdir -p $RPM_BUILD_ROOT/%{libdir}
 mkdir -p $RPM_BUILD_ROOT/%{devpi_repository}
 
-
 cd %{_srcrpmdir}/..
 make devclean
 make install HOME_DIR=$RPM_BUILD_ROOT/%{installdir} RPM_BUILD_ROOT=$RPM_BUILD_ROOT LIB_DIR=%{libdir} SITEPACKAGES_PATH=%{sitepackages_path}
@@ -54,6 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %{libdir}
 %{bindir}
 %{sitepackages_path}/%{package_name}.pth
+/etc/sysconfig/*
 %defattr(-,develenv,develenv)
 %dir %{devpi_repository}
 %doc ../../../../README.md

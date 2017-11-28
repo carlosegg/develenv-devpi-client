@@ -1,8 +1,9 @@
 #!/bin/bash
-DEVPI_HOME=/opt/ss/develenv/platform/devpi-client
+source /etc/sysconfig/develenv-devpi-client
 PYTHON_VERSION=$(python --version 2>&1|awk '{print $2}'|cut -d'.' -f1,2) 
 export PYTHONPATH=$DEVPI_HOME/lib/python${PYTHON_VERSION}/site-packages
-DEVPI_COMMAND="$DEVPI_HOME/bin/devpi"
+DEVPI_COMMAND="$DEVPI_CLIENT_HOME/bin/devpi"
+$DEVPI_COMMAND use http://${DEVPI_HOSTNAME}/devpi/develenv/dev
 $DEVPI_COMMAND login develenv --password=develenv
 if [[ -f setup.cfg ]]; then
    git add -f setup.cfg
