@@ -1,11 +1,11 @@
 
 %define package_name devpi-client
-%{!?python_dependency: %global python_dependency %([[ "$(cat /etc/redhat-release |sed s:'.*release ':'':g|awk '{print $1}'|cut -d '.' -f1)" == "7" ]] && echo python || echo python26)}
+%{!?python_dependency: %global python_dependency %([[ "$(cat /etc/redhat-release |sed s:'.*release ':'':g|awk '{print $1}'|cut -d '.' -f1)" == "8" ]] && echo python3 || echo python26)}
 %define     modify_package_name true
 # disable building of the debug package
 %define  debug_package %{nil}
 %define _unpackaged_files_terminate_build 0
-%{!?sitepackages_path: %global sitepackages_path %(python -c "from distutils.sysconfig import get_python_lib; print (get_python_lib(1))")} 
+%{!?sitepackages_path: %global sitepackages_path %(python3 -c "from distutils.sysconfig import get_python_lib; print (get_python_lib(1))")} 
 %define devpi_repository /var/develenv/repositories/devpi
 
 %define cdn_home /opt/ss/develenv/platform/
