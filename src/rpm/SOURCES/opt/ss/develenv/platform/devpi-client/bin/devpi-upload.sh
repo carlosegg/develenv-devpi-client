@@ -1,6 +1,5 @@
 #!/bin/bash
 source /etc/sysconfig/develenv-devpi-client
-PYTHON_VERSION=$(python3 --version 2>&1|awk '{print $2}'|cut -d'.' -f1,2) 
 export PYTHONPATH=$DEVPI_CLIENT_HOME/lib
 DEVPI_COMMAND="$DEVPI_CLIENT_HOME/bin/devpi"
 $DEVPI_COMMAND use http://${DEVPI_HOSTNAME}/devpi/develenv/dev
@@ -15,4 +14,4 @@ fi
 if [[ -f SCM_INFO ]]; then
    git add -f SCM_INFO
 fi
-$DEVPI_COMMAND upload
+$DEVPI_COMMAND upload -p $(grep -Po "(?<=#\!).*" setup.py)
