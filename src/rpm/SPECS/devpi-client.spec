@@ -41,7 +41,8 @@ make install HOME_DIR=$RPM_BUILD_ROOT/%{installdir} RPM_BUILD_ROOT=$RPM_BUILD_RO
 cp -R %{_sourcedir}/* $RPM_BUILD_ROOT/
 mkdir -p $RPM_BUILD_ROOT/usr/bin
 ln -sf %{bindir}/devpi-upload.sh $RPM_BUILD_ROOT/usr/bin/devpi-upload.sh
-
+sed /\'\'\'/d $RPM_BUILD_ROOT/%{bindir}/devpi
+sed s:"bin/sh":"bin/python3":g  $RPM_BUILD_ROOT/%{bindir}/devpi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
