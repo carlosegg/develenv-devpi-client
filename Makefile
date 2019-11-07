@@ -133,7 +133,6 @@ install: build-libs
 	
 	sed s:"^#\!.*/bin/python":"#\!/usr/bin/$(PYTHON_INSTALLABLE)":g $(VIRTUALENV_PATH)/bin/devpi >$(HOME_DIR)/bin/devpi
 	chmod 755 $(HOME_DIR)/bin/devpi
-	@echo "import site; site.addsitedir('$(LIB_DIR)')" > $(RPM_BUILD_ROOT)$(SITEPACKAGES_PATH)/$(NAME).pth
 
 rpm:
 	@echo ">>> Generating RPM for version $(VERSION)-$(RELEASE)"
