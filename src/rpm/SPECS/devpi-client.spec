@@ -53,7 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 %{installdir}
 %{libdir}
 %{bindir}
-%{sitepackages_path}/%{package_name}.pth
 /etc/sysconfig/*
 %defattr(-,develenv,develenv)
 %dir %{devpi_repository}
