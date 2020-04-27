@@ -16,7 +16,7 @@
 Summary:    client for devpi-server
 Name:       devpi-client
 Version:    %{versionModule}
-Release:    5.0.0.%{releaseModule}
+Release:    5.4.1.%{releaseModule}
 License:    http://opensource.org/licenses/MIT
 Packager:   softwaresano.com
 Group:      develenv
