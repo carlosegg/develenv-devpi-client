@@ -24,10 +24,23 @@ BuildArch:  x86_64
 BuildRoot:  %{_topdir}/BUILDROOT
 Vendor:     softwaresano.com
 AutoReq:    no
-Requires:   %{python_dependency} ss-develenv-user
-
+Requires:   %{python_dependency}
 %description
 %{summary}
+
+%pre
+#Create develenv user if not exists
+if [ "$(id -u develenv 2>/dev/null)" == "" ]; then
+   default_id=600
+   id_user=$(grep "^.*:.*:$default_id:" /etc/passwd)
+   id_group=$(grep "^.*:.*:$default_id:" /etc/group)
+   if [ "$id_user" == "" -a "$id_group" == "" ]; then
+      groupadd -g $default_id develenv
+      useradd -s /bin/bash -g $default_id -u $default_id develenv
+   else
+      useradd -s /bin/bash develenv
+   fi
+fi
 
 %install
 
