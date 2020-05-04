@@ -14,4 +14,4 @@ fi
 if [[ -f SCM_INFO ]]; then
    git add -f SCM_INFO
 fi
-$DEVPI_COMMAND upload -p $(grep -Po "(?<=#\!).*" setup.py)
+$DEVPI_COMMAND upload -p $(grep -Po "(?<=#\!).*" setup.py) --no-vcs
